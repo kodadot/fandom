@@ -1,4 +1,4 @@
-import { ask } from 'https://esm.sh/@kodadot1/uniquery@0.1.0-rc.0'
+import { ask } from 'https://esm.sh/@kodadot1/uniquery@0.1.1-rc.0'
 // import { getClient } from 'https://esm.sh/@kodadot1/uniquery@0.1.1-rc.0'
 
 const ADDRESS = Deno.env.get("ADDRESS");
