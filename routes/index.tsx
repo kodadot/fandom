@@ -31,7 +31,7 @@ export default function Home(ctx: PageProps<Data>) {
     <div>
       <HeadElement
         description="KodaDot fandom shop."
-        image={url.href + "og-image.png"}
+        image={url.href + "og-image.jpeg"}
         title="KodaDot Fresh"
         url={url}
       />
