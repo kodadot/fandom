@@ -8,8 +8,7 @@ import * as $1 from "./routes/api/shopify.ts";
 import * as $2 from "./routes/index.tsx";
 import * as $3 from "./routes/products/[product].tsx";
 import * as $$0 from "./islands/AddToCart.tsx";
-import * as $$1 from "./islands/Cart.tsx";
-import * as $$2 from "./islands/ProductDetails.tsx";
+import * as $$1 from "./islands/ProductDetails.tsx";
 
 const manifest = {
   routes: {
@@ -20,8 +19,7 @@ const manifest = {
   },
   islands: {
     "./islands/AddToCart.tsx": $$0,
-    "./islands/Cart.tsx": $$1,
-    "./islands/ProductDetails.tsx": $$2,
+    "./islands/ProductDetails.tsx": $$1,
   },
   baseUrl: import.meta.url,
   config,
