@@ -7,34 +7,14 @@ import { Footer } from "@/components/Footer.tsx";
 import { HeadElement } from "@/components/HeadElement.tsx";
 import { Header } from "@/components/Header.tsx";
 import IconCart from "@/components/IconCart.tsx";
-import { List, Product } from "../utils/types.ts";
+import { Item } from "../utils/types.ts";
+import { getClient } from 'https://esm.sh/@kodadot1/uniquery@0.1.1-rc.0'
 
-const q = `{
-  products(first: 10) {
-    nodes {
-      id
-      handle
-      title
-      featuredImage {
-        url(transform: {preferredContentType: WEBP, maxWidth:400, maxHeight:400})
-        altText
-      }
-      priceRange {
-        minVariantPrice {
-          amount
-          currencyCode
-        }
-        maxVariantPrice {
-          amount
-          currencyCode
-        }
-      }
-    }
-  }
-}`;
+const client = getClient()
+const { query: q } = client.itemListByCollectionId('14022023')
 
 interface Data {
-  products: List<Product>;
+  items: Item[];
 }
 
 export const handler: Handlers<Data> = {
@@ -46,7 +26,7 @@ export const handler: Handlers<Data> = {
 
 export default function Home(ctx: PageProps<Data>) {
   const { data, url } = ctx;
-  const products = data.products.nodes;
+  const products = data.items;
   return (
     <div>
       <HeadElement
@@ -74,19 +54,19 @@ export default function Home(ctx: PageProps<Data>) {
   );
 }
 
-function ProductCard(props: { product: Product }) {
+function ProductCard(props: { product: Item }) {
   const { product } = props;
   return (
-    <a key={product.id} href={`/products/${product.handle}`} class="group">
+    <a key={product.id} href={`/products/${product.id}`} class="group">
       <div
         class={tw`${
           aspectRatio(1, 1)
         } w-full bg-white rounded-xl overflow-hidden border-2 border-gray-200 transition-all duration-500 relative`}
       >
-        {product.featuredImage && (
+        {product.image && (
           <img
-            src={product.featuredImage.url}
-            alt={product.featuredImage.altText}
+            src={product.image}
+            alt={product.name}
             width="400"
             height="400"
             class="w-full h-full object-center object-contain absolute block"
@@ -100,13 +80,14 @@ function ProductCard(props: { product: Product }) {
       </div>
       <div class="flex items-center justify-between mt-3">
         <h3 class="text-lg text-gray-800 font-medium relative">
-          {product.title}
+          {product.name}
           <span
             class="bg-gray-800 h-[3px] w-0 group-hover:!w-full absolute bottom-[-2px] left-0 transition-all duration-400"
           />
         </h3>
         <strong class="text-lg font-bold text-gray-800">
-          {formatCurrency(product.priceRange.minVariantPrice)}
+          1 KSM
+          {/* {formatCurrency(product.priceRange.minVariantPrice)} */}
         </strong>
       </div>
     </a>
