@@ -4,7 +4,10 @@ import { HeadElement } from "@/components/HeadElement.tsx";
 import { Header } from "@/components/Header.tsx";
 import ProductDetails from "@/islands/ProductDetails.tsx";
 import { graphql } from "@/utils/shopify.ts";
-import { Product } from "@/utils/types.ts";
+import { Product, Item } from "@/utils/types.ts";
+import { getClient } from 'https://esm.sh/@kodadot1/uniquery@0.1.1-rc.0'
+
+const client = getClient()
 
 const q = `query ($product: String!) {
   product(handle: $product) {
@@ -44,13 +47,14 @@ const q = `query ($product: String!) {
 }`;
 
 interface Query {
-  product: Product | null;
+  item: Item | null;
 }
 
 export const handler: Handlers<Query> = {
   async GET(_req, ctx) {
-    const data = await graphql<Query>(q, { product: ctx.params.product });
-    if (!data.product) {
+    const { query: q, variables } = client.itemById(ctx.params.product)
+    const data = await graphql<Query>(q, variables);
+    if (!data.item) {
       return new Response("Product not found", { status: 404 });
     }
     return ctx.render(data);
@@ -60,16 +64,16 @@ export const handler: Handlers<Query> = {
 export default function ProductPage(ctx: PageProps<Query>) {
   const { data, url } = ctx;
 
-  if (!data.product) {
+  if (!data.item) {
     return <div>Product not found</div>;
   }
 
   return (
     <>
       <HeadElement
-        description={data.product.description}
-        image={data.product.featuredImage?.url}
-        title={data.product.title}
+        description={data.item.name}
+        image={data.item.image}
+        title={data.item.name}
         url={url}
       />
 
@@ -96,7 +100,7 @@ export default function ProductPage(ctx: PageProps<Query>) {
           Back to shop
         </a>
       </div>
-      <ProductDetails product={data.product!} />
+      {/* <ProductDetails product={data.item!} /> */}
       <Footer />
     </>
   );
