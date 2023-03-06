@@ -9,43 +9,6 @@ import { getClient } from 'https://esm.sh/@kodadot1/uniquery@0.1.1-rc.0'
 
 const client = getClient()
 
-const q = `query ($product: String!) {
-  product(handle: $product) {
-    title
-    description
-    descriptionHtml
-    productType
-
-    variants(first: 10) {
-      nodes {
-        id
-        title
-        availableForSale
-        priceV2 {
-          amount
-          currencyCode
-        }
-      }
-    }
-
-    featuredImage {
-      url(transform: {preferredContentType: WEBP, maxWidth:400, maxHeight:400})
-      width
-      height
-      altText
-    }
-
-    images(first: 10) {
-      nodes {
-        url(transform: {preferredContentType: WEBP, maxWidth:400, maxHeight:400})
-        width
-        height
-        altText
-      }
-    }
-  }
-}`;
-
 interface Query {
   item: Item | null;
 }
@@ -63,6 +26,7 @@ export const handler: Handlers<Query> = {
 
 export default function ProductPage(ctx: PageProps<Query>) {
   const { data, url } = ctx;
+  // console.log(data)
 
   if (!data.item) {
     return <div>Product not found</div>;
@@ -100,7 +64,7 @@ export default function ProductPage(ctx: PageProps<Query>) {
           Back to shop
         </a>
       </div>
-      {/* <ProductDetails product={data.item!} /> */}
+      <ProductDetails product={data.item!} />
       <Footer />
     </>
   );
