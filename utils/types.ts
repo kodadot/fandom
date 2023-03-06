@@ -29,6 +29,14 @@ export interface Item {
   issuer: string;
 }
 
+export interface Metadata {
+  name: string;
+  description: string;
+  image: string;
+  external_url?: string;
+  animation_url?: string;
+}
+
 export interface Product {
   id: string;
   handle: string;
