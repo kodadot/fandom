@@ -18,6 +18,16 @@ export interface ProductPriceRange {
   minVariantPrice: Money;
   maxVariantPrice: Money;
 }
+// ['id', 'createdAt', 'name', 'metadata', 'currentOwner', 'issuer']
+export interface Item {
+  id: string;
+  createdAt: Date;
+  name: string;
+  metadata: string;
+  currentOwner: string;
+  image?: string;
+  issuer: string;
+}
 
 export interface Product {
   id: string;
