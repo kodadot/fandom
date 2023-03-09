@@ -26,6 +26,7 @@ export interface Item {
   metadata: string;
   currentOwner: string;
   image?: string;
+  meta?: Metadata;
   issuer: string;
 }
 
