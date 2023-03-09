@@ -18,13 +18,13 @@ export function Header() {
           />
         </a>
         <h1>
-          <img
+          {/* <img
             src="/text_logo.svg"
             alt="Deno Merch"
             class="h-6"
             width="130"
             height="24"
-          />
+          /> */}
         </h1>
         <Cart />
       </nav>
