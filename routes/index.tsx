@@ -2,7 +2,7 @@ import { Handlers, PageProps } from "$fresh/server.ts";
 import { useComputed } from "@preact/signals";
 import { tw } from "twind";
 import { aspectRatio } from "@twind/aspect-ratio";
-import { formatCurrency, sanitizeUri } from "@/utils/data.ts";
+import { formatBalance, sanitizeUri } from "@/utils/data.ts";
 import { graphql } from "@/utils/shopify.ts";
 import { Footer } from "@/components/Footer.tsx";
 import { HeadElement } from "@/components/HeadElement.tsx";
@@ -61,18 +61,8 @@ export default function Home(ctx: PageProps<Data>) {
 
 function ProductCard(props: { product: Item }) {
   const { product } = props;
-  const image = useComputed(() => {
-
-    if (product.image) {
-      return sanitizeUri(product.image);
-    }
-
-    if (product.meta?.image) {
-      return sanitizeUri(product.meta.image);
-    }
-
-    return "";
-  });
+  const image = useComputed(() => sanitizeUri(product.image || product.meta?.image));
+  const price = useComputed(() => formatBalance(product.price));
 
   return (
     <a key={product.id} href={`/products/${product.id}`} class="group">
@@ -104,8 +94,7 @@ function ProductCard(props: { product: Item }) {
           />
         </h3>
         <strong class="text-lg font-bold text-gray-800">
-          1 KSM
-          {/* {formatCurrency(product.priceRange.minVariantPrice)} */}
+          { price.value }
         </strong>
       </div>
     </a>
