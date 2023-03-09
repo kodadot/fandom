@@ -5,6 +5,8 @@ import { aspectRatio } from "@twind/aspect-ratio";
 import AddToCart from "@/islands/AddToCart.tsx";
 import { formatCurrency } from "@/utils/data.ts";
 import { Item as Product } from "@/utils/types.ts";
+import { useComputed } from "@preact/signals";
+import { formatBalance, sanitizeUri, shortAddress } from "@/utils/data.ts";
 
 const descriptionStyles = css({
   "a": {
@@ -16,6 +18,9 @@ const descriptionStyles = css({
 });
 
 export default function ProductDetails({ product }: { product: Product }) {
+  const image = useComputed(() => sanitizeUri(product.image || product.meta?.image));
+  const price = useComputed(() => formatBalance(product.price));
+  
   return (
     <div class="w-11/12 max-w-5xl mx-auto mt-8 lg:grid lg:grid-cols-2 lg:gap-x-16">
       {/* Product details */}
@@ -27,13 +32,11 @@ export default function ProductDetails({ product }: { product: Product }) {
                 {product.name}
               </h2>
               <h3 class="text-gray-500 text-base leading-tight">
-                some produc type
-                {/* {product.productType} */}
+                Owned by {shortAddress(product.currentOwner)}
               </h3>
             </hgroup>
             <div class="bg-[#E8E7E5] rounded-full px-6 py-2 text-lg text-gray-900 font-bold">
-              1 KSM
-              {/* {formatCurrency(variant.priceV2)} */}
+              { price.value }
             </div>
           </div>
         </div>
@@ -49,7 +52,7 @@ export default function ProductDetails({ product }: { product: Product }) {
           <div class="mt-4 space-y-6">
             <p
               class={tw`text-base text-gray-600 ${descriptionStyles}`}
-              dangerouslySetInnerHTML={{ __html: product.name }}
+              dangerouslySetInnerHTML={{ __html: product.meta?.description || product.name }}
             />
           </div>
         </section>
@@ -62,10 +65,10 @@ export default function ProductDetails({ product }: { product: Product }) {
         } w-full bg-white rounded-xl border-2 border-gray-200 mt-12 lg:mt-0 lg:col-start-2 lg:row-span-2 lg:self-start`}
       >
         <div class="rounded-lg overflow-hidden">
-          {product.image && (
+          {image && (
             <img
               id="productImage"
-              src={product.image}
+              src={image.value}
               alt={product.name}
               width="400"
               height="400"
