@@ -1,3 +1,4 @@
+import { formatBalance as format } from 'https://deno.land/x/polkadot@0.2.29/util/mod.ts'
 import { $purify } from 'https://esm.sh/@kodadot1/minipfs@0.2.0-rc.0'
 import useSWR from "swr"
 
@@ -16,11 +17,13 @@ export function useStargazers() {
 
 export function formatBalance(amount?: bigint | string) {
   const value = BigInt(amount || BigInt(0));
-  const intl = new Intl.NumberFormat("en-US", {
+  const magic = format(value, { decimals: 12, forceUnit: '-', withZero: false, withUnit: false });
+  const intl = new Intl.NumberFormat("de-DE", {
     style: "currency",
     currency: 'KSM',
+    useGrouping: false,
   });
-  return intl.format(value / BigInt(1e12));
+  return intl.format(Number(magic)).replace(',', '.');
 }
 
 export function sanitizeUri(uri?: string) {
