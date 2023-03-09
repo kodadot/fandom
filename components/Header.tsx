@@ -1,3 +1,5 @@
+import Cart from "@/islands/Cart.tsx";
+
 export function Header() {
   return (
     <header
@@ -24,7 +26,7 @@ export function Header() {
             height="24"
           />
         </h1>
-        Cart
+        <Cart />
       </nav>
     </header>
   );
