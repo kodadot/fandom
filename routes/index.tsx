@@ -13,8 +13,8 @@ import { Item } from "@/utils/types.ts"
 
 
 const client = getClient()
-const { query: q } = client.itemListByCollectionId('14022023', {
-  fields: extendFields(['meta'])
+const { query: q } = client.itemListByCollectionId('2551182625', {
+  fields: extendFields(['meta', 'price'])
 })
 
 interface Data {
