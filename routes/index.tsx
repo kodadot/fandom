@@ -8,10 +8,13 @@ import { HeadElement } from "@/components/HeadElement.tsx";
 import { Header } from "@/components/Header.tsx";
 import IconCart from "@/components/IconCart.tsx";
 import { Item } from "../utils/types.ts";
-import { getClient } from 'https://esm.sh/@kodadot1/uniquery@0.2.0-rc.2'
+import { extendFields, getClient } from 'https://esm.sh/@kodadot1/uniquery@0.2.0-rc.3'
+
 
 const client = getClient()
-const { query: q } = client.itemListByCollectionId('14022023')
+const { query: q } = client.itemListByCollectionId('14022023', {
+  fields: extendFields(['meta'])
+})
 
 interface Data {
   items: Item[];
