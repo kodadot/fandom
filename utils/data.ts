@@ -144,8 +144,8 @@ export function formatCurrency(amount: Money) {
   return intl.format(amount.amount);
 }
 
-export function formatBalance(amount?: bigint) {
-  const value = amount || BigInt(0);
+export function formatBalance(amount?: bigint | string) {
+  const value = BigInt(amount || BigInt(0));
   const intl = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: 'KSM',
