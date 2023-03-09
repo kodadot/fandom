@@ -18,11 +18,12 @@ export function useStargazers() {
 export function formatBalance(amount?: bigint | string) {
   const value = BigInt(amount || BigInt(0));
   const magic = format(value, { decimals: 12, forceUnit: '-', withZero: false, withUnit: false });
-  const intl = new Intl.NumberFormat("en-US", {
+  const intl = new Intl.NumberFormat("de-DE", {
     style: "currency",
     currency: 'KSM',
+    useGrouping: false,
   });
-  return intl.format(Number(magic));
+  return intl.format(Number(magic)).replace(',', '.');
 }
 
 export function sanitizeUri(uri?: string) {
