@@ -1,18 +1,25 @@
+import { INDEXERS, Prefix } from "https://esm.sh/@kodadot1/static@0.0.1-rc.0"
 import { ask } from 'https://esm.sh/@kodadot1/uniquery@0.2.0-rc.3'
-// import { INDEXERS } from "https://esm.sh/@kodadot1/static@0.0.1-rc.0"
 
-const ADDRESS = Deno.env.get("ADDRESS");
-const CHAIN = Deno.env.get("CHAIN");
+const CHAIN = Deno.env.get("CHAIN") as Prefix | undefined;
 
-if (ADDRESS === undefined || CHAIN === undefined) {
+if (CHAIN === undefined) {
   throw new Error(
-    "env `ADDRESS` and `CHAIN` must be set",
+    "env `CHAIN` must be set",
   );
 }
 
-export async function getItemList<T>() {
-  await ask<T>(`/${CHAIN}/nftByIssuer/${ADDRESS}`)
+const ENDPOINT = INDEXERS[CHAIN!];
+
+if (ENDPOINT === undefined) {
+  throw new Error(
+    `indexer for ${CHAIN} not found`,
+  );
 }
+
+// export async function getItemList<T>() {
+//   await ask<T>(`/${CHAIN}/nftByIssuer/${ADDRESS}`)
+// }
 
 export async function getItem<T>(id: string) {
   await ask<T>(`/${CHAIN}/nftByIssuer/${id}`)
@@ -22,7 +29,7 @@ export async function graphql<T>(
   query: string,
   variables: Record<string, unknown> = {},
 ): Promise<T> {
-  const resp = await fetch(CHAIN!, {
+  const resp = await fetch(ENDPOINT, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
