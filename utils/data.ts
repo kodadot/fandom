@@ -153,6 +153,6 @@ export function formatBalance(amount?: bigint) {
   return intl.format(value / BigInt(1e12));
 }
 
-export function sanitizeUri(uri: string) {
-  return $purify(uri).at(0)
+export function sanitizeUri(uri?: string) {
+  return uri ? $purify(uri).at(0) : ''
 }
