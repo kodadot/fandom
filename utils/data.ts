@@ -1,5 +1,6 @@
 import useSWR, { mutate } from "swr";
 import { Image, Money } from "./types.ts";
+import { $purify } from 'https://esm.sh/@kodadot1/minipfs@0.2.0-rc.0'
 
 export interface CartData {
   id: string;
@@ -141,4 +142,8 @@ export function formatCurrency(amount: Money) {
     currency: amount.currencyCode,
   });
   return intl.format(amount.amount);
+}
+
+export function sanitizeUri(uri: string) {
+  return $purify(uri).at(0)
 }
