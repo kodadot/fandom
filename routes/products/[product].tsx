@@ -5,7 +5,7 @@ import { Header } from "@/components/Header.tsx";
 import ProductDetails from "@/islands/ProductDetails.tsx";
 import { graphql } from "@/utils/shopify.ts";
 import { Product, Item, Metadata } from "@/utils/types.ts";
-import { getClient } from 'https://esm.sh/@kodadot1/uniquery@0.2.0-rc.3'
+import { extendFields, getClient } from 'https://esm.sh/@kodadot1/uniquery@0.2.0-rc.3'
 import { $obtain } from 'https://esm.sh/@kodadot1/minipfs@0.2.0-rc.0'
 
 const client = getClient()
@@ -16,7 +16,7 @@ interface Query {
 
 export const handler: Handlers<Query> = {
   async GET(_req, ctx) {
-    const { query: q, variables } = client.itemById(ctx.params.product)
+    const { query: q, variables } = client.itemById(ctx.params.product, extendFields(['meta', 'price']))
     const data = await graphql<Query>(q, variables);
     if (!data.item) {
       return new Response("Product not found", { status: 404 });
