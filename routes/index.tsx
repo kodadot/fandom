@@ -1,7 +1,8 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
+import { useComputed } from "@preact/signals";
 import { tw } from "twind";
 import { aspectRatio } from "@twind/aspect-ratio";
-import { formatCurrency } from "@/utils/data.ts";
+import { formatCurrency, sanitizeUri } from "@/utils/data.ts";
 import { graphql } from "@/utils/shopify.ts";
 import { Footer } from "@/components/Footer.tsx";
 import { HeadElement } from "@/components/HeadElement.tsx";
@@ -30,6 +31,7 @@ export const handler: Handlers<Data> = {
 export default function Home(ctx: PageProps<Data>) {
   const { data, url } = ctx;
   const products = data.items;
+
   return (
     <div>
       <HeadElement
@@ -59,6 +61,19 @@ export default function Home(ctx: PageProps<Data>) {
 
 function ProductCard(props: { product: Item }) {
   const { product } = props;
+  const image = useComputed(() => {
+
+    if (product.image) {
+      return sanitizeUri(product.image);
+    }
+
+    if (product.meta?.image) {
+      return sanitizeUri(product.meta.image);
+    }
+
+    return "";
+  });
+
   return (
     <a key={product.id} href={`/products/${product.id}`} class="group">
       <div
@@ -66,9 +81,9 @@ function ProductCard(props: { product: Item }) {
           aspectRatio(1, 1)
         } w-full bg-white rounded-xl overflow-hidden border-2 border-gray-200 transition-all duration-500 relative`}
       >
-        {product.image && (
+        {image && (
           <img
-            src={product.image}
+            src={image.value}
             alt={product.name}
             width="400"
             height="400"
