@@ -1,5 +1,5 @@
 import { Handlers } from "$fresh/server.ts";
-import { graphql } from "@/utils/shopify.ts";
+import { graphql } from "@/utils/indexer.ts";
 
 export const handler: Handlers = {
   async POST(req) {

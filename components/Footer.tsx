@@ -1,4 +1,4 @@
-import GitHub from "./IconGithub.tsx";
+import GitHub from "@/components/IconGithub.tsx";
 
 export function Footer() {
   return (

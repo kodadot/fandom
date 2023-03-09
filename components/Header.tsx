@@ -1,4 +1,4 @@
-import Cart from "@/islands/Cart.tsx";
+import StarGazers from "@/islands/StarGazers.tsx";
 
 export function Header() {
   return (
@@ -26,7 +26,7 @@ export function Header() {
             height="24"
           /> */}
         </h1>
-        <Cart />
+        <StarGazers />
       </nav>
     </header>
   );

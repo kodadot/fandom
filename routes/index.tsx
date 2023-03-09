@@ -1,20 +1,20 @@
-import { Handlers, PageProps } from "$fresh/server.ts";
-import { useComputed } from "@preact/signals";
-import { tw } from "twind";
-import { aspectRatio } from "@twind/aspect-ratio";
-import { formatBalance, sanitizeUri } from "@/utils/data.ts";
-import { graphql } from "@/utils/shopify.ts";
-import { Footer } from "@/components/Footer.tsx";
-import { HeadElement } from "@/components/HeadElement.tsx";
-import { Header } from "@/components/Header.tsx";
-import IconCart from "@/components/IconCart.tsx";
-import { Item } from "../utils/types.ts";
+import { Handlers, PageProps } from "$fresh/server.ts"
+import { Footer } from "@/components/Footer.tsx"
+import { HeadElement } from "@/components/HeadElement.tsx"
+import { Header } from "@/components/Header.tsx"
+import IconCart from "@/components/IconCart.tsx"
+import { formatBalance, sanitizeUri } from "@/utils/data.ts"
+import { graphql } from "@/utils/indexer.ts"
+import { useComputed } from "@preact/signals"
+import { aspectRatio } from "@twind/aspect-ratio"
 import { extendFields, getClient } from 'https://esm.sh/@kodadot1/uniquery@0.2.0-rc.3'
+import { tw } from "twind"
+import { Item } from "@/utils/types.ts"
 
 
 const client = getClient()
-const { query: q } = client.itemListByCollectionId('14022023', {
-  fields: extendFields(['meta'])
+const { query: q } = client.itemListByCollectionId('2551182625', {
+  fields: extendFields(['meta', 'price'])
 })
 
 interface Data {

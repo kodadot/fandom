@@ -1,12 +1,11 @@
-import { Handlers, PageProps } from "$fresh/server.ts";
-import { Footer } from "@/components/Footer.tsx";
-import { HeadElement } from "@/components/HeadElement.tsx";
-import { Header } from "@/components/Header.tsx";
-import ProductDetails from "@/islands/ProductDetails.tsx";
-import { graphql } from "@/utils/shopify.ts";
-import { Product, Item, Metadata } from "@/utils/types.ts";
+import { Handlers, PageProps } from "$fresh/server.ts"
+import { Footer } from "@/components/Footer.tsx"
+import { HeadElement } from "@/components/HeadElement.tsx"
+import { Header } from "@/components/Header.tsx"
+import ProductDetails from "@/islands/ProductDetails.tsx"
+import { graphql } from "@/utils/indexer.ts"
+import { Item } from "@/utils/types.ts"
 import { extendFields, getClient } from 'https://esm.sh/@kodadot1/uniquery@0.2.0-rc.3'
-import { $obtain } from 'https://esm.sh/@kodadot1/minipfs@0.2.0-rc.0'
 
 const client = getClient()
 
