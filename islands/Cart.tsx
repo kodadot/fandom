@@ -1,4 +1,4 @@
-import IconCart from "@/components/IconCart.tsx"
+import IconGithub from "@/components/IconGithub.tsx"
 import {
   useStargazers
 } from "@/utils/data.ts"
@@ -22,7 +22,7 @@ export default function Cart() {
         onClick={add}
         class="flex items-center gap-2 items-center border-2 border-gray-800 rounded-full px-5 py-1 font-semibold text-gray-800 hover:bg-gray-800 hover:text-white transition-colors duration-300"
       >
-        <IconCart />
+        <IconGithub />
         {data?.watchers ?? "0"}
       </button>
 
