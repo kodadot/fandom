@@ -3,7 +3,7 @@ import {
   useStargazers
 } from "@/utils/data.ts"
 
-export default function Cart() {
+export default function StarGazers() {
   const { data, error } = useStargazers();
 
   const add = (e: MouseEvent) => {
