@@ -32,7 +32,10 @@ export default function ProductDetails({ product }: { product: Product }) {
                 {product.name}
               </h2>
               <h3 class="text-gray-500 text-base leading-tight">
-                Owned by {shortAddress(product.currentOwner)}
+              Owned by {' '}
+              <a class="text-blue-500 hover:underline" target="_blank" href={`https://kodadot.xyz/bsx/u/${product.currentOwner}`} >
+              { shortAddress(product.currentOwner)}
+              </a>
               </h3>
             </hgroup>
             <div class="bg-[#E8E7E5] rounded-full px-6 py-2 text-lg text-gray-900 font-bold">
