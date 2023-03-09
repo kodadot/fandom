@@ -1,8 +1,8 @@
-interface AddToCartProps {
+interface ProductActionProps {
   id: string;
 }
 
-export default function AddToCart(props: AddToCartProps) {
+export default function ProductAction(props: ProductActionProps) {
   const add = (e: MouseEvent) => {
     e.preventDefault();
     const url = `https://kodadot.xyz/bsx/gallery/${props.id}`;
