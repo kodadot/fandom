@@ -2,6 +2,10 @@ import useSWR, { mutate } from "swr";
 import { Image, Money } from "./types.ts";
 import { $purify } from 'https://esm.sh/@kodadot1/minipfs@0.2.0-rc.0'
 
+export interface GithubData {
+  watchers: number
+}
+
 export interface CartData {
   id: string;
   lines: {
@@ -96,6 +100,15 @@ async function cartFetcher(): Promise<CartData> {
   }
 
   return cart;
+}
+
+async function githubApiFetcher(): Promise<GithubData> {
+  const res = await fetch("https://api.github.com/repos/kodadot/nft-gallery");
+  return await res.json();
+}
+
+export function useStargazers() {
+  return useSWR<GithubData, Error>("watchers", githubApiFetcher);
 }
 
 export function useCart() {
