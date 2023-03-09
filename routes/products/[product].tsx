@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer.tsx"
 import { HeadElement } from "@/components/HeadElement.tsx"
 import { Header } from "@/components/Header.tsx"
 import ProductDetails from "@/islands/ProductDetails.tsx"
-import { graphql } from "@/utils/shopify.ts"
+import { graphql } from "@/utils/indexer.ts"
 import { Item } from "@/utils/types.ts"
 import { extendFields, getClient } from 'https://esm.sh/@kodadot1/uniquery@0.2.0-rc.3'
 

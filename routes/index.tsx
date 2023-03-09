@@ -4,7 +4,7 @@ import { HeadElement } from "@/components/HeadElement.tsx"
 import { Header } from "@/components/Header.tsx"
 import IconCart from "@/components/IconCart.tsx"
 import { formatBalance, sanitizeUri } from "@/utils/data.ts"
-import { graphql } from "@/utils/shopify.ts"
+import { graphql } from "@/utils/indexer.ts"
 import { useComputed } from "@preact/signals"
 import { aspectRatio } from "@twind/aspect-ratio"
 import { extendFields, getClient } from 'https://esm.sh/@kodadot1/uniquery@0.2.0-rc.3'
