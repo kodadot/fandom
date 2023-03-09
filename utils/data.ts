@@ -144,6 +144,15 @@ export function formatCurrency(amount: Money) {
   return intl.format(amount.amount);
 }
 
+export function formatBalance(amount?: bigint) {
+  const value = amount || BigInt(0);
+  const intl = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: 'KSM',
+  });
+  return intl.format(value / BigInt(1e12));
+}
+
 export function sanitizeUri(uri: string) {
   return $purify(uri).at(0)
 }
