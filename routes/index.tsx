@@ -8,7 +8,7 @@ import { HeadElement } from "@/components/HeadElement.tsx";
 import { Header } from "@/components/Header.tsx";
 import IconCart from "@/components/IconCart.tsx";
 import { Item } from "../utils/types.ts";
-import { getClient } from 'https://esm.sh/@kodadot1/uniquery@0.1.1-rc.0'
+import { getClient } from 'https://esm.sh/@kodadot1/uniquery@0.2.0-rc.2'
 
 const client = getClient()
 const { query: q } = client.itemListByCollectionId('14022023')

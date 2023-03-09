@@ -5,7 +5,7 @@ import { Header } from "@/components/Header.tsx";
 import ProductDetails from "@/islands/ProductDetails.tsx";
 import { graphql } from "@/utils/shopify.ts";
 import { Product, Item, Metadata } from "@/utils/types.ts";
-import { getClient } from 'https://esm.sh/@kodadot1/uniquery@0.1.1-rc.0'
+import { getClient } from 'https://esm.sh/@kodadot1/uniquery@0.2.0-rc.2'
 import { $obtain } from 'https://esm.sh/@kodadot1/minipfs@0.2.0-rc.0'
 
 const client = getClient()
