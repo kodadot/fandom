@@ -13,11 +13,6 @@ import { Item } from "@/utils/types.ts"
 
 
 const client = getClient()
-const { query: q } = client.itemListByOwner('bXkoDafMy8Boj55M1KW5dNucT9U7itQLEe7TCwrNykFabADDi', {
-  fields: ['id', 'meta', 'name', 'price'],
-  offset: 10,
-  orderBy: 'sn_ASC'
-})
 
 interface Data {
   items: Item[];
@@ -25,6 +20,10 @@ interface Data {
 
 export const handler: Handlers<Data> = {
   async GET(_req, ctx) {
+    const { query: q } = client.itemListByCollectionId(ctx.params.id, {
+      fields: ['id', 'meta', 'name', 'price'],
+      orderBy: 'name_DESC'
+    })
     const data = await graphql<Data>(q);
     return ctx.render(data);
   },
