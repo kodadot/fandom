@@ -18,6 +18,7 @@ const descriptionStyles = css({
 export default function ProductDetails({ product }: { product: Product }) {
   const image = useComputed(() => sanitizeUri(product.image || product.meta?.image));
   const price = useComputed(() => formatBalance(product.price));
+  const collectionId = useComputed(() => product.id.split('-').at(0));
   
   return (
     <div class="w-11/12 max-w-5xl mx-auto mt-8 lg:grid lg:grid-cols-2 lg:gap-x-16">
@@ -33,6 +34,12 @@ export default function ProductDetails({ product }: { product: Product }) {
               Owned by {' '}
               <a class="text-blue-500 hover:underline" target="_blank" href={`https://kodadot.xyz/bsx/u/${product.currentOwner}`} >
               { shortAddress(product.currentOwner)}
+              </a>
+              </h3>
+              <h3 class="text-gray-500 text-base leading-tight">
+              Collection {' '}
+              <a class="text-blue-500 hover:underline" href={`/collections/${collectionId.value}`} >
+              { collectionId.value }
               </a>
               </h3>
             </hgroup>
