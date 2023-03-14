@@ -1,5 +1,5 @@
 import { INDEXERS, Prefix } from "https://esm.sh/@kodadot1/static@0.0.1-rc.0"
-import { ask } from 'https://esm.sh/@kodadot1/uniquery@0.2.0-rc.3'
+import { ask, getClient } from 'https://esm.sh/@kodadot1/uniquery@0.2.1-rc.0'
 
 const CHAIN = Deno.env.get("CHAIN") as Prefix | undefined;
 
@@ -25,6 +25,16 @@ export async function getItem<T>(id: string) {
   await ask<T>(`/${CHAIN}/nftByIssuer/${id}`)
 }
 
+export async function $graphql<T>(
+  query: string,
+  variables: Record<string, unknown> = {},
+): Promise<T> {
+  const client = getClient(CHAIN)
+  const result = await client.fetch<{ data: T }>({ query, variables })
+  console.log(result)
+  return result.data as T
+}
+
 export async function graphql<T>(
   query: string,
   variables: Record<string, unknown> = {},
@@ -45,7 +55,4 @@ export async function graphql<T>(
     throw new Error(json.errors.map((e: Error) => e.message).join("\n"));
   }
   return json.data as T;
-  // Sleep for 1 second
-  // await new Promise((resolve) => setTimeout(resolve, 1000))
-  // return {} as T
 }
