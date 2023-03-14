@@ -5,8 +5,9 @@
 import config from "./deno.json" assert { type: "json" };
 import * as $0 from "./routes/_app.tsx";
 import * as $1 from "./routes/api/shopify.ts";
-import * as $2 from "./routes/index.tsx";
-import * as $3 from "./routes/products/[product].tsx";
+import * as $2 from "./routes/collections/[id].tsx";
+import * as $3 from "./routes/index.tsx";
+import * as $4 from "./routes/products/[product].tsx";
 import * as $$0 from "./islands/ProductAction.tsx";
 import * as $$1 from "./islands/ProductDetails.tsx";
 import * as $$2 from "./islands/StarGazers.tsx";
@@ -15,8 +16,9 @@ const manifest = {
   routes: {
     "./routes/_app.tsx": $0,
     "./routes/api/shopify.ts": $1,
-    "./routes/index.tsx": $2,
-    "./routes/products/[product].tsx": $3,
+    "./routes/collections/[id].tsx": $2,
+    "./routes/index.tsx": $3,
+    "./routes/products/[product].tsx": $4,
   },
   islands: {
     "./islands/ProductAction.tsx": $$0,
