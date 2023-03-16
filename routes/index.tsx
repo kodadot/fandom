@@ -8,13 +8,14 @@ import { graphql } from "@/utils/indexer.ts"
 import { Item } from "@/utils/types.ts"
 import { useComputed } from "@preact/signals"
 import { aspectRatio } from "@twind/aspect-ratio"
-import { extendFields, getClient } from 'https://esm.sh/@kodadot1/uniquery@0.2.0-rc.3'
+import { extendFields, getClient } from 'https://esm.sh/@kodadot1/uniquery@0.2.1-rc.0'
 import { tw } from "twind"
 
 
 const client = getClient()
 const { query: q } = client.itemListByCollectionId('21032023', {
-  fields: extendFields(['meta', 'price'])
+  fields: extendFields(['meta', 'price']),
+  orderBy: 'createdAt_ASC',
 })
 
 interface Data {

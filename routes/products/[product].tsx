@@ -5,7 +5,7 @@ import { Header } from "@/components/Header.tsx"
 import ProductDetails from "@/islands/ProductDetails.tsx"
 import { graphql } from "@/utils/indexer.ts"
 import { Item } from "@/utils/types.ts"
-import { extendFields, getClient } from 'https://esm.sh/@kodadot1/uniquery@0.2.0-rc.3'
+import { extendFields, getClient } from 'https://esm.sh/@kodadot1/uniquery@0.2.1-rc.0'
 
 const client = getClient()
 
