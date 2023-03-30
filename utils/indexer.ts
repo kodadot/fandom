@@ -1,4 +1,4 @@
-import { INDEXERS, Prefix } from "https://esm.sh/@kodadot1/static@0.0.1-rc.0"
+import { INDEXERS, Prefix } from "https://esm.sh/@kodadot1/static@0.0.1-rc.1"
 import { ask } from 'https://esm.sh/@kodadot1/uniquery@0.2.1-rc.0'
 
 const CHAIN = Deno.env.get("CHAIN") as Prefix | undefined;
