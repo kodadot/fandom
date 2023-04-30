@@ -1,18 +1,19 @@
 import { formatBalance as format } from 'https://deno.land/x/polkadot@0.2.29/util/mod.ts'
 import { $purify } from 'https://esm.sh/@kodadot1/minipfs@0.2.0-rc.0'
-import useSWR from "swr"
+// import useSWR from "swr"
 
 export interface GithubData {
   watchers: number
 }
 
-async function githubApiFetcher(): Promise<GithubData> {
-  const res = await fetch("https://api.github.com/repos/kodadot/nft-gallery");
-  return await res.json();
-}
+// async function githubApiFetcher(): Promise<GithubData> {
+//   const res = await fetch("https://api.github.com/repos/kodadot/nft-gallery");
+//   return await res.json();
+// }
 
 export function useStargazers() {
-  return useSWR<GithubData, Error>("watchers", githubApiFetcher);
+  // return useSWR<GithubData, Error>("watchers", githubApiFetcher);
+  return { watchers: 440 }
 }
 
 export function formatBalance(amount?: bigint | string) {
