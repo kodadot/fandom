@@ -13,7 +13,8 @@ import { tw } from "twind"
 
 
 const client = getClient()
-const { query: q } = client.itemListByCollectionId('21032023', {
+const collectionId = Deno.env.get('COLLECTION_ID') || '21032023'
+const { query: q } = client.itemListByCollectionId(collectionId, {
   fields: extendFields(['meta', 'price']),
   orderBy: 'createdAt_ASC',
 })
