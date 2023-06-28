@@ -8,7 +8,7 @@ import { graphql } from "@/utils/indexer.ts"
 import { Item } from "@/utils/types.ts"
 import { useComputed } from "@preact/signals"
 import { aspectRatio } from "@twind/aspect-ratio"
-import { extendFields, getClient } from 'https://esm.sh/@kodadot1/uniquery@0.2.1-rc.0'
+import { extendFields, getClient } from '@kodadot1/uniquery'
 import { tw } from "twind"
 
 
