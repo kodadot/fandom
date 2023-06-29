@@ -23,7 +23,7 @@ export default function StarGazers() {
         class="flex items-center gap-2 items-center border-2 border-gray-800 rounded-full px-5 py-1 font-semibold text-gray-800 hover:bg-gray-800 hover:text-white transition-colors duration-300"
       >
         <IconGithub />
-        {data?.watchers ?? "0"}
+        {data?.watchers ?? "467"}
       </button>
 
     </div>
