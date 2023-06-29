@@ -5,6 +5,7 @@ import { useComputed } from "@preact/signals"
 import { aspectRatio } from "@twind/aspect-ratio"
 import { tw } from "twind"
 import { css } from "twind/css"
+import { render } from "https://deno.land/x/gfm/mod.ts";
 
 const descriptionStyles = css({
   "a": {
@@ -53,7 +54,7 @@ export default function ProductDetails({ product }: { product: Product }) {
           <div class="mt-4 space-y-6">
             <p
               class={tw`text-base text-gray-600 ${descriptionStyles}`}
-              dangerouslySetInnerHTML={{ __html: product.meta?.description || product.name }}
+              dangerouslySetInnerHTML={{ __html: render(product.meta?.description || product.name) }}
             />
           </div>
         </section>
