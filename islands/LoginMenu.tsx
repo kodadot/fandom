@@ -38,7 +38,7 @@ export default function LoginMenu() {
                 class="border-2 border-black rounded-lg py-3 px-4 space-y-1 text-left transition-colors hover:bg-gray-200 relative">
                 <h1 class="font-medium text-lg">{account.meta.name}</h1>
                 <p>{account.meta.source}</p>
-                <pre class="text-xs">{account.address.substring(0, 20)}...</pre>
+                <pre class="text-xs text-gray-400">{account.address.substring(0, 20)}...</pre>
                 <div class="absolute top-0 right-0 bottom-0 flex flex-col justify-center">
                   <div class={`mr-4 h-4 w-4 border-2 border-black rounded-full ${selectedAccount.value === account ? 'bg-black' : ''}`}></div>
                 </div>
