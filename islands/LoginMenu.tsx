@@ -20,12 +20,18 @@ export default function LoginMenu() {
       )}
 
       <div class={`flex flex-col justify-end sm:justify-start pointer-events-none fixed left-0 sm:left-auto top-0 right-0 bottom-0 z-50 rounded-t-2xl w-screen sm:w-96 sm:rounded-r-none sm:rounded-l-2xl transition-transform ${isMenuVisible.value ? 'translate-x-0' : 'translate-x-full'}`}>
-        <div class="space-y-5 p-6 bg-white sm:flex-1 pointer-events-auto">
-          <div class="flex justify-between items-start">
+        <div class="p-6 bg-white sm:flex-1 pointer-events-auto">
+          <div class="flex justify-between items-center">
             <h1 class="text-4xl">Accounts</h1>
-            <button class="p-1" onClick={() => isMenuVisible.value = false}>✖</button>
+            <button 
+              class="p-1 flex items-center" 
+              onClick={() => isMenuVisible.value = false}>
+              <svg xmlns="http://www.w3.org/2000/svg" height="28" viewBox="0 -960 960 960" width="28">
+                <path d="m251.333-204.667-46.666-46.666L433.334-480 204.667-708.667l46.666-46.666L480-526.666l228.667-228.667 46.666 46.666L526.666-480l228.667 228.667-46.666 46.666L480-433.334 251.333-204.667Z"/>
+              </svg>
+            </button>
           </div>
-          <div class="flex flex-col space-y-2">
+          <div class="mt-8 flex flex-col space-y-2">
             {accounts.value.map((account) => (
               <button 
                 onClick={() => selectAccount(account)}
