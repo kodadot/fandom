@@ -1,4 +1,4 @@
-// import { web3Accounts, web3Enable } from './extension-dapp.js'
+import { web3Accounts, web3Enable } from './extension-dapp.js'
 import { InjectedAccountWithMeta } from 'https://esm.sh/@polkadot/extension-inject/types'
 import { signal } from '@preact/signals'
 import { IS_BROWSER } from '$fresh/runtime.ts'
@@ -8,8 +8,8 @@ export const selectedAccount = signal<InjectedAccountWithMeta | null>(null)
 export const isLoaded = signal(false)
 
 if (IS_BROWSER) {
-  window.extensionDapp.web3Enable('subscaffold dapp').then(() => {
-    window.extensionDapp.web3Accounts().then((availableAccounts: InjectedAccountWithMeta[]) => {
+  web3Enable('subscaffold dapp').then(() => {
+    web3Accounts().then((availableAccounts: InjectedAccountWithMeta[]) => {
       accounts.value = availableAccounts
       isLoaded.value = true
 
