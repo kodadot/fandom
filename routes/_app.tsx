@@ -6,6 +6,7 @@ export default function App({ Component }: AppProps) {
     <>
       <Head>
         <link rel="stylesheet" href="/app.css" />
+        <script src="/extension-dapp.js"></script>
       </Head>
       <Component />
     </>
