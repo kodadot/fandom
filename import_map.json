@@ -12,9 +12,9 @@
     "twind/": "https://esm.sh/twind@0.16.19/",
     "$std/": "https://deno.land/std@0.154.0/",
     "swr": "https://esm.sh/v98/swr@2.0.0-beta.6?alias=react:preact/compat&external=preact/compat",
-    "@kodadot1/uniquery": "https://esm.sh/@kodadot1/uniquery@0.3.1-rc.0",
-    "@kodadot1/uniquery/": "https://esm.sh/@kodadot1/uniquery@0.3.1-rc.0/",
-    "@kodadot1/static": "https://esm.sh/@kodadot1/static@0.0.3-rc.4",
-    "@kodadot1/static/": "https://esm.sh/@kodadot1/static@0.0.3-rc.4/"
+    "@kodadot1/uniquery": "https://esm.sh/@kodadot1/uniquery@0.4.0",
+    "@kodadot1/uniquery/": "https://esm.sh/@kodadot1/uniquery@0.4.0/",
+    "@kodadot1/static": "https://esm.sh/@kodadot1/static@0.0.3",
+    "@kodadot1/static/": "https://esm.sh/@kodadot1/static@0.0.3/"
   }
 }
