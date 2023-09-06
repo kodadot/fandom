@@ -31,7 +31,7 @@ export default function ProductDetails({ product }: { product: Product }) {
               </h2>
               <h3 class="text-gray-500 text-base leading-tight">
               Owned by {' '}
-              <a class="text-blue-500 hover:underline" target="_blank" href={`https://kodadot.xyz/bsx/u/${product.currentOwner}`} >
+              <a class="text-blue-500 hover:underline" target="_blank" href={`https://kodadot.xyz/ahk/u/${product.currentOwner}`} >
               { shortAddress(product.currentOwner)}
               </a>
               </h3>
