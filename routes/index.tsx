@@ -12,7 +12,7 @@ import { extendFields, getClient } from "@kodadot1/uniquery";
 import { tw } from "twind";
 
 const client = getClient("ahp");
-const collectionId = Deno.env.get("COLLECTION_ID") || "11";
+const collectionId = Deno.env.get("COLLECTION_ID") || "30";
 
 interface ItemsResult {
   items: Item[];
