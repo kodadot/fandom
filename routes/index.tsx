@@ -104,7 +104,7 @@ export default function Home(ctx: PageProps<Data>) {
             {Array(pageCount).fill(0).map((_, idx) => (
               <a
                 href={`/?page=${idx + 1}`}
-                class={`py-1 px-4 font-bold block ${
+                class={`py-1 px-3 font-bold block ${
                   (idx + 1 === page) ? "bg-gray-700 text-white" : ""
                 }`}
               >
