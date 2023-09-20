@@ -4,14 +4,14 @@ import { HeadElement } from "@/components/HeadElement.tsx";
 import { Header } from "@/components/Header.tsx";
 import IconCart from "@/components/IconCart.tsx";
 import { formatBalance, sanitizeUri } from "@/utils/data.ts";
-import { graphql } from "@/utils/indexer.ts";
+import { graphql, CHAIN } from "@/utils/indexer.ts";
 import { Item } from "@/utils/types.ts";
 import { useComputed } from "@preact/signals";
 import { aspectRatio } from "@twind/aspect-ratio";
 import { extendFields, getClient } from "@kodadot1/uniquery";
 import { tw } from "twind";
 
-const client = getClient("ahp");
+const client = getClient(CHAIN);
 const collectionId = Deno.env.get("COLLECTION_ID") || "30";
 
 interface ItemsResult {
