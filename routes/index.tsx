@@ -41,7 +41,7 @@ export const handler: Handlers<Data> = {
     )
       .then((result) => result?.itemCount?.totalCount);
 
-    const itemsPerPage = 12;
+    const itemsPerPage = Number(Deno.env.get("PAGINATION") ?? 12);
     const pageCount = Math.ceil(count / itemsPerPage);
     const page = Math.min(
       Math.max(Number(url.searchParams.get("page")), 1),
