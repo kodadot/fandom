@@ -1,7 +1,7 @@
 import { INDEXERS, Prefix } from '@kodadot1/static'
 import { ask } from '@kodadot1/uniquery'
 
-const CHAIN = Deno.env.get("CHAIN") as Prefix | undefined;
+export const CHAIN = Deno.env.get("CHAIN") as Prefix | undefined;
 
 if (CHAIN === undefined) {
   throw new Error(

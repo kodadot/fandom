@@ -11,9 +11,9 @@ export interface GithubData {
 //   return await res.json();
 // }
 
-export function useStargazers() {
+export function useStargazers(): { data: GithubData | undefined; error: Error | null } {
   // return useSWR<GithubData, Error>("watchers", githubApiFetcher);
-  return { watchers: 440 }
+  return { data: { watchers: 500 }, error: null }
 }
 
 export function formatBalance(amount?: bigint | string) {

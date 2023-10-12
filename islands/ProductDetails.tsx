@@ -1,11 +1,12 @@
 import ProductAction from "@/islands/ProductAction.tsx"
 import { formatBalance, sanitizeUri, shortAddress } from "@/utils/data.ts"
+import { CHAIN } from "@/utils/indexer.ts"
 import { Item as Product } from "@/utils/types.ts"
 import { useComputed } from "@preact/signals"
 import { aspectRatio } from "@twind/aspect-ratio"
+import { render } from "https://deno.land/x/gfm@0.2.3/mod.ts"
 import { tw } from "twind"
 import { css } from "twind/css"
-import { render } from "https://deno.land/x/gfm/mod.ts";
 
 const descriptionStyles = css({
   "a": {
@@ -32,7 +33,7 @@ export default function ProductDetails({ product }: { product: Product }) {
               </h2>
               <h3 class="text-gray-500 text-base leading-tight">
               Owned by {' '}
-              <a class="text-blue-500 hover:underline" target="_blank" href={`https://kodadot.xyz/bsx/u/${product.currentOwner}`} >
+              <a class="text-blue-500 hover:underline" target="_blank" href={`https://kodadot.xyz/${CHAIN}/u/${product.currentOwner}`} >
               { shortAddress(product.currentOwner)}
               </a>
               </h3>
