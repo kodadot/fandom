@@ -1,4 +1,5 @@
 import StarGazers from "@/islands/StarGazers.tsx";
+import LoginMenu from "@/islands/LoginMenu.tsx";
 
 export function Header() {
   return (
@@ -26,7 +27,7 @@ export function Header() {
             height="24"
           /> */}
         </h1>
-        <StarGazers />
+        <LoginMenu />
       </nav>
     </header>
   );
