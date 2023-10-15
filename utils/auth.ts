@@ -1,5 +1,5 @@
 import { web3Accounts, web3Enable } from './extension-dapp.js'
-import { InjectedAccountWithMeta } from 'https://esm.sh/@polkadot/extension-inject/types'
+import { InjectedAccountWithMeta } from "@polkadot/extension-inject/types"
 import { signal } from '@preact/signals'
 import { IS_BROWSER } from '$fresh/runtime.ts'
 
