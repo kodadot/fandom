@@ -1,5 +1,5 @@
 import { useSignal } from '@preact/signals'
-import { accounts, selectAccount, selectedAccount, isLoaded } from '../utils/auth.ts'
+import { accounts, selectAccount, selectedAccount, isLoaded } from '@/utils/auth.ts'
 import { animation } from 'twind/css'
 import { tw } from 'twind'
 

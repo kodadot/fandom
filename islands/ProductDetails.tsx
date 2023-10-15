@@ -4,7 +4,7 @@ import { CHAIN } from "@/utils/indexer.ts"
 import { Item as Product } from "@/utils/types.ts"
 import { useComputed } from "@preact/signals"
 import { aspectRatio } from "@twind/aspect-ratio"
-import { render } from "https://deno.land/x/gfm@0.2.3/mod.ts"
+import { render } from "https://deno.land/x/gfm@0.2.5/mod.ts"
 import { tw } from "twind"
 import { css } from "twind/css"
 
